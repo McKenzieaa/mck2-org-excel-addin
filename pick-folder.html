@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Select Destination Folder</title>
+    <script src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js"></script>
+    <style>
+      body { font-family: "Segoe UI", sans-serif; margin: 24px; color: #201f1e; }
+      button { background: #c4a574; color: #1b1b1b; border: 0; padding: 10px 16px; cursor: pointer; font-size: 14px; }
+      p { font-size: 13px; line-height: 1.4; }
+      #err { color: #a4262c; }
+    </style>
+    <script type="module" crossorigin src="/mck2-org-excel-addin/assets/pickFolder-QWZxSRJu.js"></script>
+    <link rel="modulepreload" crossorigin href="/mck2-org-excel-addin/assets/modulepreload-polyfill-B5Qt9EMX.js">
+    <link rel="modulepreload" crossorigin href="/mck2-org-excel-addin/assets/module3-BF7fmA6o.js">
+  </head>
+  <body>
+    <p>Select the destination folder. A company folder will be created there with Archive, Industry Data, Final, and Client Data.</p>
+    <button id="pick" type="button">Select Destination Folder</button>
+    <input id="clientFiles" type="file" multiple hidden />
+    <p id="err"></p>
+  </body>
+</html>
