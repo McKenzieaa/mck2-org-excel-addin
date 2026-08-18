@@ -1,0 +1,135 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<OfficeApp
+  xmlns="http://schemas.microsoft.com/office/appforoffice/1.1"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0"
+  xmlns:ov="http://schemas.microsoft.com/office/taskpaneappversionoverrides"
+  xsi:type="TaskPaneApp">
+  <Id>a7c4e91b-6d2f-4a18-9c5e-8b1f0d3e7a42</Id>
+  <Version>1.0.3</Version>
+  <ProviderName>McKenzie</ProviderName>
+  <DefaultLocale>en-US</DefaultLocale>
+  <DisplayName DefaultValue="MCK2 Org Excel Add-in" />
+  <Description DefaultValue="Organisation Excel add-in. Calculation logic ported from Module1â€“Module4 .bas files." />
+  <IconUrl DefaultValue="https://mckenzieaa.github.io/mck2-org-excel-addin/assets/icon-32.png" />
+  <HighResolutionIconUrl DefaultValue="https://mckenzieaa.github.io/mck2-org-excel-addin/assets/icon-80.png" />
+  <SupportUrl DefaultValue="https://github.com/McKenzieaa/mckenzie-org-addin" />
+  <AppDomains>
+    <AppDomain>https://mckenzieaa.github.io</AppDomain>
+  </AppDomains>
+  <Hosts>
+    <Host Name="Workbook" />
+  </Hosts>
+  <DefaultSettings>
+    <SourceLocation DefaultValue="https://mckenzieaa.github.io/mck2-org-excel-addin/taskpane.html" />
+  </DefaultSettings>
+  <Permissions>ReadWriteDocument</Permissions>
+  <VersionOverrides xmlns="http://schemas.microsoft.com/office/taskpaneappversionoverrides" xsi:type="VersionOverridesV1_0">
+    <Hosts>
+      <Host xsi:type="Workbook">
+        <DesktopFormFactor>
+          <FunctionFile resid="Commands.Url" />
+          <ExtensionPoint xsi:type="PrimaryCommandSurface">
+            <OfficeTab id="TabHome">
+              <Group id="Mck.Group">
+                <Label resid="Group.Label" />
+                <Icon>
+                  <bt:Image size="16" resid="Icon.16" />
+                  <bt:Image size="32" resid="Icon.32" />
+                  <bt:Image size="80" resid="Icon.80" />
+                </Icon>
+                <Control xsi:type="Button" id="Mck.Taskpane">
+                  <Label resid="Taskpane.Label" />
+                  <Supertip>
+                    <Title resid="Taskpane.Label" />
+                    <Description resid="Taskpane.Tip" />
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Icon.16" />
+                    <bt:Image size="32" resid="Icon.32" />
+                    <bt:Image size="80" resid="Icon.80" />
+                  </Icon>
+                  <Action xsi:type="ShowTaskpane">
+                    <TaskpaneId>Mck.TaskpaneId</TaskpaneId>
+                    <SourceLocation resid="Taskpane.Url" />
+                    <Title resid="Taskpane.Label" />
+                  </Action>
+                </Control>
+                <Control xsi:type="Button" id="Mck.IfErrorBlank">
+                  <Label resid="IfErrorBlank.Label" />
+                  <Supertip>
+                    <Title resid="IfErrorBlank.Label" />
+                    <Description resid="IfErrorBlank.Tip" />
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Icon.16" />
+                    <bt:Image size="32" resid="Icon.32" />
+                    <bt:Image size="80" resid="Icon.80" />
+                  </Icon>
+                  <Action xsi:type="ExecuteFunction">
+                    <FunctionName>IfErrorBlank</FunctionName>
+                  </Action>
+                </Control>
+                <Control xsi:type="Button" id="Mck.IfErrorZero">
+                  <Label resid="IfErrorZero.Label" />
+                  <Supertip>
+                    <Title resid="IfErrorZero.Label" />
+                    <Description resid="IfErrorZero.Tip" />
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Icon.16" />
+                    <bt:Image size="32" resid="Icon.32" />
+                    <bt:Image size="80" resid="Icon.80" />
+                  </Icon>
+                  <Action xsi:type="ExecuteFunction">
+                    <FunctionName>IfErrorZero</FunctionName>
+                  </Action>
+                </Control>
+                <Control xsi:type="Button" id="Mck.Highlight">
+                  <Label resid="Highlight.Label" />
+                  <Supertip>
+                    <Title resid="Highlight.Label" />
+                    <Description resid="Highlight.Tip" />
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Icon.16" />
+                    <bt:Image size="32" resid="Icon.32" />
+                    <bt:Image size="80" resid="Icon.80" />
+                  </Icon>
+                  <Action xsi:type="ExecuteFunction">
+                    <FunctionName>BDHighlighter</FunctionName>
+                  </Action>
+                </Control>
+              </Group>
+            </OfficeTab>
+          </ExtensionPoint>
+        </DesktopFormFactor>
+      </Host>
+    </Hosts>
+    <Resources>
+      <bt:Images>
+        <bt:Image id="Icon.16" DefaultValue="https://mckenzieaa.github.io/mck2-org-excel-addin/assets/icon-16.png" />
+        <bt:Image id="Icon.32" DefaultValue="https://mckenzieaa.github.io/mck2-org-excel-addin/assets/icon-32.png" />
+        <bt:Image id="Icon.80" DefaultValue="https://mckenzieaa.github.io/mck2-org-excel-addin/assets/icon-80.png" />
+      </bt:Images>
+      <bt:Urls>
+        <bt:Url id="Commands.Url" DefaultValue="https://mckenzieaa.github.io/mck2-org-excel-addin/commands.html" />
+        <bt:Url id="Taskpane.Url" DefaultValue="https://mckenzieaa.github.io/mck2-org-excel-addin/taskpane.html" />
+      </bt:Urls>
+      <bt:ShortStrings>
+        <bt:String id="Group.Label" DefaultValue="MCK Org" />
+        <bt:String id="Taskpane.Label" DefaultValue="Valuation" />
+        <bt:String id="IfErrorBlank.Label" DefaultValue="IFERROR blank" />
+        <bt:String id="IfErrorZero.Label" DefaultValue="IFERROR zero" />
+        <bt:String id="Highlight.Label" DefaultValue="Highlight" />
+      </bt:ShortStrings>
+      <bt:LongStrings>
+        <bt:String id="Taskpane.Tip" DefaultValue="Open the task pane for valuation folder and report (Module2 / Module3)." />
+        <bt:String id="IfErrorBlank.Tip" DefaultValue="Wrap selected formulas in IFERROR returning blank (Module1)." />
+        <bt:String id="IfErrorZero.Tip" DefaultValue="Wrap selected formulas in IFERROR returning zero (Module1)." />
+        <bt:String id="Highlight.Tip" DefaultValue="Highlight keywords in the selection in red (Module4)." />
+      </bt:LongStrings>
+    </Resources>
+  </VersionOverrides>
+</OfficeApp>
+

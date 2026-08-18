@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>MCK Org Excel Add-in</title>
+    <script src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js"></script>
+    <style>
+      body { font-family: "Segoe UI", sans-serif; font-size: 13px; margin: 16px; color: #201f1e; }
+      h1 { font-size: 16px; }
+      section { border: 1px solid #edebe9; padding: 12px; margin-bottom: 16px; }
+      label { display: block; margin: 8px 0 4px; }
+      button { background: #0078d4; color: #fff; border: 0; padding: 8px 12px; cursor: pointer; }
+      button:disabled { background: #a19f9d; }
+      .msg { margin-top: 8px; white-space: pre-wrap; }
+      .err { color: #a4262c; }
+    </style>
+    <script type="module" crossorigin src="/mck2-org-excel-addin/assets/module4-oAQy4Pdb.js"></script>
+    <script type="module" crossorigin src="/mck2-org-excel-addin/assets/taskpane-BX-UbQau.js"></script>
+  </head>
+  <body>
+    <p id="boot">Opening task pane… If this stays here, Excel cannot reach https://localhost:3000 (run npm run dev).</p>
+    <h1>MCK Org Excel Add-in</h1>
+    <p>Logic is ported from <code>src/Module1.bas</code>–<code>Module4.bas</code>. VBA in Git is unchanged.</p>
+
+    <section>
+      <h2>Module 1 — IFERROR</h2>
+      <p>Selection only; HasFormula and not array formula.</p>
+      <button id="btnBlank" type="button">IfError blank</button>
+      <button id="btnZero" type="button">IfError zero</button>
+    </section>
+
+    <section>
+      <h2>Module 4 — Highlight</h2>
+      <label>Enter keywords separated by commas:</label>
+      <input id="keywords" type="text" style="width:100%" />
+      <button id="btnHighlight" type="button">BDHighlighter</button>
+    </section>
+
+    <section>
+      <h2>Module 3 — New folder with valuation files</h2>
+      <p>Same cancel rules as the .bas. Office cannot use Windows folder picker unless the browser allows a directory.</p>
+      <label>Company name</label>
+      <input id="company" type="text" style="width:100%" />
+      <label>Excel template (*.xlsx)</label>
+      <input id="excelTpl" type="file" accept=".xlsx" />
+      <label>Word template (*.docx)</label>
+      <input id="wordTpl" type="file" accept=".docx" />
+      <button id="btnFolder" type="button">Create folder files</button>
+    </section>
+
+    <section>
+      <h2>Module 2 — Generate valuation report</h2>
+      <p>Open the <code>Valuation_*.xlsx</code> workbook first. Pick <code>Valuation_*.docx</code>. Summary sheet + exhibits use the same cells and names as Module2.bas.</p>
+      <label>Word file (Valuation_*.docx)</label>
+      <input id="wordReport" type="file" accept=".docx" />
+      <button id="btnReport" type="button">Generate report</button>
+    </section>
+
+    <div id="msg" class="msg"></div>
+  </body>
+</html>
