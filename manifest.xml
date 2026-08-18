@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <OfficeApp
   xmlns="http://schemas.microsoft.com/office/appforoffice/1.1"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -6,7 +6,7 @@
   xmlns:ov="http://schemas.microsoft.com/office/taskpaneappversionoverrides"
   xsi:type="TaskPaneApp">
   <Id>a7c4e91b-6d2f-4a18-9c5e-8b1f0d3e7a42</Id>
-  <Version>1.0.3</Version>
+  <Version>1.0.5</Version>
   <ProviderName>McKenzie</ProviderName>
   <DefaultLocale>en-US</DefaultLocale>
   <DisplayName DefaultValue="MCK2 Org Excel Add-in" />
@@ -16,12 +16,14 @@
   <SupportUrl DefaultValue="https://github.com/McKenzieaa/mckenzie-org-addin" />
   <AppDomains>
     <AppDomain>https://mckenzieaa.github.io</AppDomain>
+    <AppDomain>https://login.microsoftonline.com</AppDomain>
+    <AppDomain>https://graph.microsoft.com</AppDomain>
   </AppDomains>
   <Hosts>
     <Host Name="Workbook" />
   </Hosts>
   <DefaultSettings>
-    <SourceLocation DefaultValue="https://mckenzieaa.github.io/mck2-org-excel-addin/taskpane.html" />
+    <SourceLocation DefaultValue="https://mckenzieaa.github.io/mck2-org-excel-addin/taskpane.html?tab=library" />
   </DefaultSettings>
   <Permissions>ReadWriteDocument</Permissions>
   <VersionOverrides xmlns="http://schemas.microsoft.com/office/taskpaneappversionoverrides" xsi:type="VersionOverridesV1_0">
@@ -30,9 +32,9 @@
         <DesktopFormFactor>
           <FunctionFile resid="Commands.Url" />
           <ExtensionPoint xsi:type="PrimaryCommandSurface">
-            <OfficeTab id="TabHome">
-              <Group id="Mck.Group">
-                <Label resid="Group.Label" />
+            <CustomTab id="Mck.Tab">
+              <Group id="Mck.GroupValuation">
+                <Label resid="GroupValuation.Label" />
                 <Icon>
                   <bt:Image size="16" resid="Icon.16" />
                   <bt:Image size="32" resid="Icon.32" />
@@ -55,53 +57,60 @@
                     <Title resid="Taskpane.Label" />
                   </Action>
                 </Control>
-                <Control xsi:type="Button" id="Mck.IfErrorBlank">
-                  <Label resid="IfErrorBlank.Label" />
+                <Control xsi:type="Button" id="Mck.CompanyFolder">
+                  <Label resid="CompanyFolder.Label" />
                   <Supertip>
-                    <Title resid="IfErrorBlank.Label" />
-                    <Description resid="IfErrorBlank.Tip" />
+                    <Title resid="CompanyFolder.Label" />
+                    <Description resid="CompanyFolder.Tip" />
                   </Supertip>
                   <Icon>
                     <bt:Image size="16" resid="Icon.16" />
                     <bt:Image size="32" resid="Icon.32" />
                     <bt:Image size="80" resid="Icon.80" />
                   </Icon>
-                  <Action xsi:type="ExecuteFunction">
-                    <FunctionName>IfErrorBlank</FunctionName>
+                  <Action xsi:type="ShowTaskpane">
+                    <TaskpaneId>Mck.TaskpaneId</TaskpaneId>
+                    <SourceLocation resid="Taskpane.Deal.Url" />
+                    <Title resid="CompanyFolder.Label" />
                   </Action>
                 </Control>
-                <Control xsi:type="Button" id="Mck.IfErrorZero">
-                  <Label resid="IfErrorZero.Label" />
+                <Control xsi:type="Button" id="Mck.Report">
+                  <Label resid="Report.Label" />
                   <Supertip>
-                    <Title resid="IfErrorZero.Label" />
-                    <Description resid="IfErrorZero.Tip" />
+                    <Title resid="Report.Label" />
+                    <Description resid="Report.Tip" />
                   </Supertip>
                   <Icon>
                     <bt:Image size="16" resid="Icon.16" />
                     <bt:Image size="32" resid="Icon.32" />
                     <bt:Image size="80" resid="Icon.80" />
                   </Icon>
-                  <Action xsi:type="ExecuteFunction">
-                    <FunctionName>IfErrorZero</FunctionName>
+                  <Action xsi:type="ShowTaskpane">
+                    <TaskpaneId>Mck.TaskpaneId</TaskpaneId>
+                    <SourceLocation resid="Taskpane.Report.Url" />
+                    <Title resid="Report.Label" />
                   </Action>
                 </Control>
-                <Control xsi:type="Button" id="Mck.Highlight">
-                  <Label resid="Highlight.Label" />
+                <Control xsi:type="Button" id="Mck.Formulas">
+                  <Label resid="Formulas.Label" />
                   <Supertip>
-                    <Title resid="Highlight.Label" />
-                    <Description resid="Highlight.Tip" />
+                    <Title resid="Formulas.Label" />
+                    <Description resid="Formulas.Tip" />
                   </Supertip>
                   <Icon>
                     <bt:Image size="16" resid="Icon.16" />
                     <bt:Image size="32" resid="Icon.32" />
                     <bt:Image size="80" resid="Icon.80" />
                   </Icon>
-                  <Action xsi:type="ExecuteFunction">
-                    <FunctionName>BDHighlighter</FunctionName>
+                  <Action xsi:type="ShowTaskpane">
+                    <TaskpaneId>Mck.TaskpaneId</TaskpaneId>
+                    <SourceLocation resid="Taskpane.Formulas.Url" />
+                    <Title resid="Formulas.Label" />
                   </Action>
                 </Control>
               </Group>
-            </OfficeTab>
+              <Label resid="Tab.Label" />
+            </CustomTab>
           </ExtensionPoint>
         </DesktopFormFactor>
       </Host>
@@ -114,20 +123,24 @@
       </bt:Images>
       <bt:Urls>
         <bt:Url id="Commands.Url" DefaultValue="https://mckenzieaa.github.io/mck2-org-excel-addin/commands.html" />
-        <bt:Url id="Taskpane.Url" DefaultValue="https://mckenzieaa.github.io/mck2-org-excel-addin/taskpane.html" />
+        <bt:Url id="Taskpane.Url" DefaultValue="https://mckenzieaa.github.io/mck2-org-excel-addin/taskpane.html?tab=library" />
+        <bt:Url id="Taskpane.Deal.Url" DefaultValue="https://mckenzieaa.github.io/mck2-org-excel-addin/taskpane.html?tab=deal" />
+        <bt:Url id="Taskpane.Report.Url" DefaultValue="https://mckenzieaa.github.io/mck2-org-excel-addin/taskpane.html?tab=report" />
+        <bt:Url id="Taskpane.Formulas.Url" DefaultValue="https://mckenzieaa.github.io/mck2-org-excel-addin/taskpane.html?tab=tools" />
       </bt:Urls>
       <bt:ShortStrings>
-        <bt:String id="Group.Label" DefaultValue="MCK Org" />
-        <bt:String id="Taskpane.Label" DefaultValue="Valuation" />
-        <bt:String id="IfErrorBlank.Label" DefaultValue="IFERROR blank" />
-        <bt:String id="IfErrorZero.Label" DefaultValue="IFERROR zero" />
-        <bt:String id="Highlight.Label" DefaultValue="Highlight" />
+        <bt:String id="Tab.Label" DefaultValue="McKenzie Valuation" />
+        <bt:String id="GroupValuation.Label" DefaultValue="McKenzie Valuation" />
+        <bt:String id="Taskpane.Label" DefaultValue="Valuation Library" />
+        <bt:String id="CompanyFolder.Label" DefaultValue="Create Valuation" />
+        <bt:String id="Report.Label" DefaultValue="Generate Report" />
+        <bt:String id="Formulas.Label" DefaultValue="Formulas" />
       </bt:ShortStrings>
       <bt:LongStrings>
-        <bt:String id="Taskpane.Tip" DefaultValue="Open the task pane for valuation folder and report (Module2 / Module3)." />
-        <bt:String id="IfErrorBlank.Tip" DefaultValue="Wrap selected formulas in IFERROR returning blank (Module1)." />
-        <bt:String id="IfErrorZero.Tip" DefaultValue="Wrap selected formulas in IFERROR returning zero (Module1)." />
-        <bt:String id="Highlight.Tip" DefaultValue="Highlight keywords in the selection in red (Module4)." />
+        <bt:String id="Taskpane.Tip" DefaultValue="Open the valuation company library." />
+        <bt:String id="CompanyFolder.Tip" DefaultValue="Create a company valuation folder with templates and standard subfolders." />
+        <bt:String id="Report.Tip" DefaultValue="Generate the valuation Word report from Valuation_*.xlsx and Valuation_*.docx." />
+        <bt:String id="Formulas.Tip" DefaultValue="IFERROR wrap and keyword highlight tools." />
       </bt:LongStrings>
     </Resources>
   </VersionOverrides>
