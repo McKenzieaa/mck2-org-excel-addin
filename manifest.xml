@@ -1,0 +1,147 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<OfficeApp
+  xmlns="http://schemas.microsoft.com/office/appforoffice/1.1"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0"
+  xmlns:ov="http://schemas.microsoft.com/office/taskpaneappversionoverrides"
+  xsi:type="TaskPaneApp">
+  <Id>a7c4e91b-6d2f-4a18-9c5e-8b1f0d3e7a42</Id>
+  <Version>1.0.14</Version>
+  <ProviderName>Alpheus IQ</ProviderName>
+  <DefaultLocale>en-US</DefaultLocale>
+  <DisplayName DefaultValue="Alpheus IQ" />
+  <Description DefaultValue="Alpheus IQ valuation Excel add-in." />
+  <IconUrl DefaultValue="https://mckenzieaa.github.io/mck2-org-excel-addin/assets/icon-32.png" />
+  <HighResolutionIconUrl DefaultValue="https://mckenzieaa.github.io/mck2-org-excel-addin/assets/icon-80.png" />
+  <SupportUrl DefaultValue="https://mckenzieaa.github.io/mck2-org-excel-addin/taskpane.html" />
+  <AppDomains>
+    <AppDomain>https://mckenzieaa.github.io</AppDomain>
+    <AppDomain>https://login.microsoftonline.com</AppDomain>
+    <AppDomain>https://graph.microsoft.com</AppDomain>
+  </AppDomains>
+  <Hosts>
+    <Host Name="Workbook" />
+  </Hosts>
+  <DefaultSettings>
+    <SourceLocation DefaultValue="https://mckenzieaa.github.io/mck2-org-excel-addin/taskpane.html" />
+  </DefaultSettings>
+  <Permissions>ReadWriteDocument</Permissions>
+  <VersionOverrides xmlns="http://schemas.microsoft.com/office/taskpaneappversionoverrides" xsi:type="VersionOverridesV1_0">
+    <Hosts>
+      <Host xsi:type="Workbook">
+        <DesktopFormFactor>
+          <FunctionFile resid="Commands.Url" />
+          <ExtensionPoint xsi:type="PrimaryCommandSurface">
+            <CustomTab id="Mck.Tab">
+              <Group id="Mck.GroupValuation">
+                <Label resid="GroupValuation.Label" />
+                <Icon>
+                  <bt:Image size="16" resid="Icon.16" />
+                  <bt:Image size="32" resid="Icon.32" />
+                  <bt:Image size="80" resid="Icon.80" />
+                </Icon>
+                <Control xsi:type="Button" id="Mck.Taskpane">
+                  <Label resid="Taskpane.Label" />
+                  <Supertip>
+                    <Title resid="Taskpane.Label" />
+                    <Description resid="Taskpane.Tip" />
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Icon.16" />
+                    <bt:Image size="32" resid="Icon.32" />
+                    <bt:Image size="80" resid="Icon.80" />
+                  </Icon>
+                  <Action xsi:type="ShowTaskpane">
+                    <TaskpaneId>Mck.TaskpaneId</TaskpaneId>
+                    <SourceLocation resid="Taskpane.Url" />
+                    <Title resid="Taskpane.Label" />
+                  </Action>
+                </Control>
+                <Control xsi:type="Button" id="Mck.CompanyFolder">
+                  <Label resid="CompanyFolder.Label" />
+                  <Supertip>
+                    <Title resid="CompanyFolder.Label" />
+                    <Description resid="CompanyFolder.Tip" />
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Icon.16" />
+                    <bt:Image size="32" resid="Icon.32" />
+                    <bt:Image size="80" resid="Icon.80" />
+                  </Icon>
+                  <Action xsi:type="ShowTaskpane">
+                    <TaskpaneId>Mck.TaskpaneId</TaskpaneId>
+                    <SourceLocation resid="Taskpane.Deal.Url" />
+                    <Title resid="CompanyFolder.Label" />
+                  </Action>
+                </Control>
+                <Control xsi:type="Button" id="Mck.Report">
+                  <Label resid="Report.Label" />
+                  <Supertip>
+                    <Title resid="Report.Label" />
+                    <Description resid="Report.Tip" />
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Icon.16" />
+                    <bt:Image size="32" resid="Icon.32" />
+                    <bt:Image size="80" resid="Icon.80" />
+                  </Icon>
+                  <Action xsi:type="ShowTaskpane">
+                    <TaskpaneId>Mck.TaskpaneId</TaskpaneId>
+                    <SourceLocation resid="Taskpane.Report.Url" />
+                    <Title resid="Report.Label" />
+                  </Action>
+                </Control>
+                <Control xsi:type="Button" id="Mck.Formulas">
+                  <Label resid="Formulas.Label" />
+                  <Supertip>
+                    <Title resid="Formulas.Label" />
+                    <Description resid="Formulas.Tip" />
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Icon.16" />
+                    <bt:Image size="32" resid="Icon.32" />
+                    <bt:Image size="80" resid="Icon.80" />
+                  </Icon>
+                  <Action xsi:type="ShowTaskpane">
+                    <TaskpaneId>Mck.TaskpaneId</TaskpaneId>
+                    <SourceLocation resid="Taskpane.Formulas.Url" />
+                    <Title resid="Formulas.Label" />
+                  </Action>
+                </Control>
+              </Group>
+              <Label resid="Tab.Label" />
+            </CustomTab>
+          </ExtensionPoint>
+        </DesktopFormFactor>
+      </Host>
+    </Hosts>
+    <Resources>
+      <bt:Images>
+        <bt:Image id="Icon.16" DefaultValue="https://mckenzieaa.github.io/mck2-org-excel-addin/assets/icon-16.png" />
+        <bt:Image id="Icon.32" DefaultValue="https://mckenzieaa.github.io/mck2-org-excel-addin/assets/icon-32.png" />
+        <bt:Image id="Icon.80" DefaultValue="https://mckenzieaa.github.io/mck2-org-excel-addin/assets/icon-80.png" />
+      </bt:Images>
+      <bt:Urls>
+        <bt:Url id="Commands.Url" DefaultValue="https://mckenzieaa.github.io/mck2-org-excel-addin/commands.html" />
+        <bt:Url id="Taskpane.Url" DefaultValue="https://mckenzieaa.github.io/mck2-org-excel-addin/taskpane.html" />
+        <bt:Url id="Taskpane.Deal.Url" DefaultValue="https://mckenzieaa.github.io/mck2-org-excel-addin/deal.html" />
+        <bt:Url id="Taskpane.Report.Url" DefaultValue="https://mckenzieaa.github.io/mck2-org-excel-addin/report.html" />
+        <bt:Url id="Taskpane.Formulas.Url" DefaultValue="https://mckenzieaa.github.io/mck2-org-excel-addin/formulas.html" />
+      </bt:Urls>
+      <bt:ShortStrings>
+        <bt:String id="Tab.Label" DefaultValue="Alpheus IQ" />
+        <bt:String id="GroupValuation.Label" DefaultValue="Alpheus IQ" />
+        <bt:String id="Taskpane.Label" DefaultValue="Valuation Library" />
+        <bt:String id="CompanyFolder.Label" DefaultValue="Create Valuation" />
+        <bt:String id="Report.Label" DefaultValue="Generate Report" />
+        <bt:String id="Formulas.Label" DefaultValue="Formulas" />
+      </bt:ShortStrings>
+      <bt:LongStrings>
+        <bt:String id="Taskpane.Tip" DefaultValue="Open the valuation company library." />
+        <bt:String id="CompanyFolder.Tip" DefaultValue="Create a company valuation folder with templates and standard subfolders." />
+        <bt:String id="Report.Tip" DefaultValue="Generate the valuation Word report from Valuation_*.xlsx and Valuation_*.docx." />
+        <bt:String id="Formulas.Tip" DefaultValue="IFERROR wrap and keyword highlight tools." />
+      </bt:LongStrings>
+    </Resources>
+  </VersionOverrides>
+</OfficeApp>
